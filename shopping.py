@@ -8,16 +8,6 @@ shoppingend = "no"
 removeitem = 0
 removemore = "yes"
 
-def itemremover() :
-    print("your shopping list :")
-    for obj in shoplist :
-        print(obj)
-    removeitem = input("enter the unwanted item :  ")
-    shoplist.remove(removeitem)
-    print("your shopping list :")
-    for obj in shoplist :
-        return obj
-    
 
 adm = input("are you a shopper or admin(a) :   ")
 if adm == "a" :
@@ -26,7 +16,13 @@ if adm == "a" :
         print("access granted")
 else :
     while shoppingend == "no" :
-        print("Enter your ",str(itemcount)+ending,"item ,enter(finish) to end shopping ,to remove item enter(remove), to see your shopping list enter(veiw) .")
+        print(
+            '''
+enter(x) to end shopping 
+to remove item enter(r).
+            '''
+        )
+        print("enter your",str(itemcount)+ending,"item :")
         item = input("enter item here :  ")
 
         itemcount = itemcount+1
@@ -39,17 +35,25 @@ else :
         else :
             ending = "th"
 
-        if item == "finish" :
+        if item == "x" :
             shoppingend = "yes"
-        elif item == "remove" :
+        elif item == "r" :
             while removemore == "yes" :
-                itemremover
+                print("your shopping list :")
+                for obj in shoplist :
+                    print(obj)
+                removeitem = input("enter the unwanted item :  ")
+                shoplist.remove(removeitem)
+                print("your shopping list :")
+                for obj in shoplist :
+                    print(obj)
                 removemore = input("want to remove more items (yes/no) :  ") 
                 
         else : 
             shoplist.append(item)
+            for obj in shoplist :
+                print(obj)
     
-
 
     print(item)
         
