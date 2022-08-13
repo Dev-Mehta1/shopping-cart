@@ -43,7 +43,11 @@ to remove item enter(r).
                 for obj in shoplist :
                     print(obj)
                 removeitem = input("enter the unwanted item :  ")
-                shoplist.remove(removeitem)
+                try:
+                    shoplist.remove(removeitem)
+                    itemcount = itemcount - 1
+                except :
+                    print("item not in list")
                 print("your shopping list :")
                 for obj in shoplist :
                     print(obj)
